@@ -123,6 +123,7 @@ type Alert struct {
 	StartsAt     time.Time `json:"startsAt"`
 	EndsAt       time.Time `json:"endsAt"`
 	GeneratorURL string    `json:"generatorURL"`
+	ValueString string    `json:"valueString"`
 	Fingerprint  string    `json:"fingerprint"`
 }
 
