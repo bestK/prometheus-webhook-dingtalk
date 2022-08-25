@@ -3,21 +3,13 @@ on:
   workflow_dispatch
 
 jobs:
-  release:
-    name: Release on GitHub
+  release-linux-amd64:
+    name: release linux/amd64
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v1
-
-    - name: Validates GO releaser config
-      uses: docker://goreleaser/goreleaser:latest
+    - uses: actions/checkout@v3
+    - uses: wangyoucao577/go-release-action@v1.30
       with:
-        args: check
-
-    - name: Create release on GitHub
-      uses: docker://goreleaser/goreleaser:latest
-      with:
-        args: release
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        goos: linux
+        goarch: amd64
